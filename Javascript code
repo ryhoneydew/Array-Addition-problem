@@ -1,0 +1,15 @@
+const arrayAdditionI = (anArr) => {
+	anArr.sort((a,b) => b-a);
+	let largestNumber = anArr.shift();
+	let sum = anArr.reduce((a,b) => a+b);
+	if(sum === largestNumber) return true;
+	for(let i = 0; i< anArr.length; i++) {
+		let difference = sum - anArr[i];
+		if((sum - anArr[i]) === largestNumber) return true;
+		for(let j = 0; j < anArr.length; j++) {
+			if(i != j) difference -= anArr[j];
+			if(difference === largestNumber) return true;
+		}
+	}
+	return false;
+}
